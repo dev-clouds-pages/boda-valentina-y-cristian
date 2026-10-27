@@ -1,19 +1,20 @@
-/* Paleta: noche y azul rey (fondos), hielo (secciones suaves), blanco (papel), champán (detalle) */
+/* Paleta: noche y azul cobalto (fondos), hielo (secciones suaves), blanco (papel), champán (detalle) */
 :root {
-  --noche: #0a1240;
-  --azul: #121a5e;
-  --azul-medio: #3a4a9a;
-  --hielo: #e8ecf7;
-  --papel: #fbfcff;
-  --tinta: #141a33;
-  --tinta-suave: #4b5275;
-  --real: #121a5e;
-  --real-osc: #0a1240;
+  --noche: #001d4a;        /* fondos oscuros: menú, RSVP, pie */
+  --azul: #0047ab;         /* cobalto */
+  --azul-medio: #3f75c9;
+  --hielo: #e8f0fb;        /* secciones suaves */
+  --papel: #fbfdff;
+  --tinta: #0f1a2e;
+  --tinta-suave: #4a5a75;
+  --real: #0047ab;         /* botones, enlaces, acentos */
+  --real-osc: #003380;     /* hover de botones */
   --oro: #c8a96a;
   --error: #8f2330;
   --ok: #2f5d46;
   --titles: "Lavishly Yours", Georgia, "Times New Roman", serif;
   --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --subtitle: "Great Vibes", Georgia, "Times New Roman", serif;
   --texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -23,6 +24,7 @@ body { margin: 0; font-family: var(--texto); font-size: 1.0625rem; line-height: 
 body.bloqueado { overflow: hidden; }
 img { max-width: 100%; display: block; }
 h1, h2, h3, h4 { font-family: var(--display); font-weight: 300; line-height: 1.15; margin: 0; }
+.subtitle { font-family: var(--subtitle); font-weight: 400; font-style: normal; }
 p { margin: 0 0 1em; }
 a { color: inherit; }
 [hidden] { display: none !important; }
@@ -59,7 +61,7 @@ a { color: inherit; }
 /* ---------- Portada ---------- */
 .hero { 
   position: relative; min-height: 100svh; display: grid; place-items: center; text-align: center; color: var(--papel); padding: 6rem 1.25rem 4rem;
-  background: linear-gradient(180deg, rgba(10,18,64,.55), rgba(10,18,64,.8)), url("assets/foto_2.jpeg") center / cover no-repeat, var(--noche); }
+  background: linear-gradient(180deg, rgba(10,18,64,.55), rgba(10,18,64,.8)), url("assets/foto_2.jpeg") right / cover no-repeat, var(--noche); }
 .hero__contenido { max-width: 42rem; }
 .hero__para { font-size: 1.05rem; margin-bottom: 1.5rem; color: #c5cdea; }
 .hero__para strong { display: block; font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 5vw, 2rem); color: var(--papel); }
@@ -86,8 +88,8 @@ a { color: inherit; }
 /* ---------- Secciones ---------- */
 .seccion { padding: clamp(3.3rem, 9vw, 6rem) 1.25rem; }
 .seccion--hielo { background: var(--hielo); }
-.envolver { max-width: 62rem; margin: 0 auto; }
-.envolver--texto { max-width: 40rem; }
+.envolver { max-width: 65rem; margin: 0 auto; }
+.envolver--texto { max-width: 60rem; }
 .seccion h2 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1.5rem; color: var(--noche); }
 .seccion h3 { font-size: 1.5rem; margin-bottom: .6rem; }
 
@@ -215,3 +217,51 @@ legend { padding: 0; margin-bottom: .75rem; font-weight: 600; }
 .separator{
   align-content: center;
 }
+
+.text-normal {
+  font-family: var(--texto);
+}
+
+
+/* ---------- Banner con imagen y texto ---------- */
+.banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(16rem, 40vw, 26rem);
+  overflow: hidden;
+  text-align: center;
+  color: var(--papel);
+}
+.banner__imagen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Capa azul para que el texto se lea sobre cualquier foto */
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(10, 18, 64, .15), rgba(10, 18, 64, .15));
+}
+.banner__texto {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  padding: 3rem 1.25rem;
+}
+.banner h2 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  margin: 0;
+  color: var(--papel);
+}
+.banner .intro { color: var(--oro); }
+
+/* Opcional: texto alineado a la izquierda (agrega la clase banner--izquierda) */
+.banner--izquierda { place-items: center start; text-align: left; }
+.banner--izquierda .banner__texto { margin-left: max(1.25rem, calc((100% - 62rem) / 2)); }
+
+
